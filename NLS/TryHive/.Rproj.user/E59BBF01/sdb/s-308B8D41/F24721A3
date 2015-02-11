@@ -1,0 +1,17 @@
+{
+    "contents" : "install.packages(\"bigrquery\")\n\ninstall.packages(\"httpuv\")\n\nlibrary(bigrquery)\n\n\nlibrary(bigrquery)\n\nres <- query_exec(\"SELECT \n                  c_time, \n                  buy_id, \n                  ad_id,\n                  count(*),\n                  sum(this_country),\n                  ROUND(sum(this_country)/count(*) * 100, 2)\n                  FROM \n                  (select \n                  substr(time,0,10) c_time, \n                  buy_id, \n                  ad_id, \n                  country, \n                  case when country = 'United States' then 1 else 0 end as this_country\n                  from \n                  TABLE_DATE_RANGE(dt.click_5295_, TIMESTAMP('2014-11-10'), TIMESTAMP('2014-11-11'))) \n                  group by c_time, buy_id, ad_id\n                  having sum(this_country)/count(*) between 0.5 and 0.85\"\n                  , project=\"371216794594\")371216794594",
+    "created" : 1422844238485.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1255895110",
+    "id" : "F24721A3",
+    "lastKnownWriteTime" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

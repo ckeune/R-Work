@@ -1,0 +1,17 @@
+{
+    "contents" : "\nlibrary(googleVis)\n\n\ndatelist <- data.frame(as.Date('2014-10-01'))\nnames(datelist) <- 'Date'\n\nfor(i in 1:100){\n  newdate <- data.frame(as.Date(datelist[1,] + i))\n  names(newdate) <- 'Date'\n  datelist<- rbind(datelist,newdate)\n}\n\n\nemeamotion <- read.delim(\"~/emeamotion.txt\")\n\nemeamotion$date <- as.Date(emeamotion$date )\nMotion=gvisMotionChart(emeamotion, \n                       idvar=\"advertiser\",\n                       yvar=\"freq\",\n                       xvar=\"imps\",\n                       timevar=\"date\")\n\n\nplot(Motion)\nmerger <- merge(x = emeamotion, y = emeamotion$date, by = NULL)\n\npopall <- sqldf (\"select advertiser, date, imps, users, totalaud ,precentaud\n                 from emeamotion t1\n                 full join emeamotion t2 on t1.date = t2.date\n                 \")\n\n\n\n\n",
+    "created" : 1423189978642.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2301108760",
+    "id" : "3CE9AC57",
+    "lastKnownWriteTime" : 1423238806,
+    "path" : "C:/R/sdfaf/EmeaMotion.R",
+    "project_path" : "EmeaMotion.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

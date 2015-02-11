@@ -1,0 +1,16 @@
+{
+    "contents" : "\ninstall.packages(\"RODBC\") \n \n\nlibrary(RODBC)\ncon <-odbcConnect(\"Olive11\", uid=\"olive\", pwd=\"olive_tr33s\")\n#sqlSave(con, test_table, \"TEST_TABLE\")\ng <-sqlQuery(con,  \"select * from DS_20141028_RST_0ZV157LCHOGDG@analyst\")\n\nliaox <-sqlQuery(con, \"select * from DS_20150126_ACT_QB6DPZJO3XAZC\")\n#d <- sqlQuery(con, \"select * from TEST_TABLE\")\nclose(con)\n",
+    "created" : 1422635640900.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1485390899",
+    "id" : "3801AC35",
+    "lastKnownWriteTime" : 1422828864,
+    "path" : "C:/R/Oracle/pulldatafromolive.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

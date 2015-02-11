@@ -1,0 +1,17 @@
+{
+    "contents" : "hive_connection <- function( hostname= 'dlhive01.cloud.msrch', port= 10000, lib_dir )\n{\n  library( RJDBC )\n  \n  hive_jars <- c('commons-logging-1.0.4.jar','hadoop-core-0.20.2+737.jar',    'hive-exec-0.7.1-cdh3u1.jar', 'hive-jdbc-0.7.1-cdh3u1.jar',    'hive-metastore-0.7.1-cdh3u1.jar', 'hive-service-0.7.1-cdh3u1.jar',\n                 'libfb303.jar','libthrift.jar', 'log4j-1.2.15.jar',\n                 'slf4j-api-1.6.1.jar', 'slf4j-log4j12-1.6.1.jar' )\n  \n  # lib_dir: directory containing the jars above. hive_class_path <- file.path( lib_dir, hive_jars )\n  \n  drv <- JDBC( 'org.apache.hadoop.hive.jdbc.HiveDriver',classPath=  hive_class_path, \"`\" )\n  \n  server <- sprintf( 'jdbc:hive://%s:%s/default', hostname, port )\n  \n  return ( dbConnect( drv, server ) )\n}\n\n\ninstall.packages(\"rJava\")\ninstall.packages(\"RJDBC\")\ninstall.packages(\"DBI\")\nlibrary(\"DBI\")\nlibrary(\"rJava\")\nlibrary(\"RJDBC\")\n\nfor(l in list.files('/usr/lib/hive/lib/')){ .jaddClassPath(paste(\"/usr/lib/hive/lib/\",l,sep=\"\"))}\nfor(l in list.files('/usr/lib/hadoop/')){ .jaddClassPath(paste(\"/usr/lib/hadoop/\",l,sep=\"\"))}",
+    "created" : 1422829209322.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2156260402",
+    "id" : "E047670",
+    "lastKnownWriteTime" : 157723008,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

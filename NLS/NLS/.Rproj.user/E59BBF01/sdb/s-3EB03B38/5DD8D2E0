@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1422992167612.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "5DD8D2E0",
+    "lastKnownWriteTime" : 7741240723082584096,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "DIRSource1",
+        "contentUrl" : "content?title=DIRSource1&file=cba6b6ec2d4d41b08b2259bf9ed98b52.htm",
+        "displayedObservations" : 10,
+        "displayedVariables" : 8,
+        "totalObservations" : 10,
+        "variables" : 7
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : " \nlibrary(corrplot)\nlibrary(gdata)                     # documentation \nmydata = read.xls(\"~/DIRM20142x.xlsx\")  # read from first sheet\n\ncol1 <- colorRampPalette(c(\"#7F0000\", \"red\", \"#FF7F00\", \"yellow\", \"white\", \"cyan\", \n                           \"#007FFF\", \"blue\", \"#00007F\"))\n\ncol2 <- colorRampPalette(c(\"#67001F\", \"#B2182B\", \"#D6604D\", \"#F4A582\", \"#FDDBC7\", \n                           \"#FFFFFF\", \"#D1E5F0\", \"#92C5DE\", \"#4393C3\", \"#2166AC\", \"#053061\"))\n\ncol3 <- colorRampPalette(c(\"red\", \"white\",\"#F4B400\", \"#D84437\")) \n\nDIRM20142 <-  read.delim(\"~/DIRM20142EMEA.txt\", header=TRUE, dec=\",\",stringsAsFactors=FALSE,as.is=T, na.strings = \".\")\n \n\n#DIRM20142 <-  read.delim(\"~/demot.txt\", header=TRUE, dec=\",\",stringsAsFactors=FALSE,as.is=T, na.strings = \".\")\n\nDMIR <- as.matrix(data.frame(DIRM20142[-1]))\n\ncorrplot(DMIR,is.corr = FALSE,method = \"square\", col = col3(100), sig.level = 0.05) \ncorrplot.mixed(DMIR, is.corr = FALSE, lower = \"square\", upper = \"circle\", col = col3(100))\ncorrplot.mixed(DMIR, is.corr = FALSE)\ncorrplot(DIRM20143, is.corr = FALSE, method = \"square\")\n\nas.numeric(DMIR[1,])\n\nas.numeric(DIRM20143)\nmax(DMIR[,4])",
+    "created" : 1423012640658.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2718727595",
+    "id" : "DA5CDD8B",
+    "lastKnownWriteTime" : 1423250885,
+    "path" : "C:/R/sdfaf/coreplot.R",
+    "project_path" : "coreplot.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

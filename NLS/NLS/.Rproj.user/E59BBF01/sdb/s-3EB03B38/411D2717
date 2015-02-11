@@ -1,0 +1,17 @@
+{
+    "contents" : "\n\n\nrequired_libraries <- c('ggplot2',  \n                        'stringr', \n                        'dplyr',\n                        'migest',\n                        'circlize')\n\n\nfor (lib_name in required_libraries){\n  if (!require(lib_name, character.only = T)) \n    install.packages(lib_name)\n  library(lib_name, character.only = T)\n} \n\n \ndemo(\"cfplot_reg\", \"migest\")",
+    "created" : 1421345361863.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "579676419",
+    "id" : "411D2717",
+    "lastKnownWriteTime" : 3836297539226650963,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

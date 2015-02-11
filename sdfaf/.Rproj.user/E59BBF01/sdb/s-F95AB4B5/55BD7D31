@@ -1,0 +1,17 @@
+{
+    "contents" : "Geo=gvisGeoChart(Exports, locationvar=\"Country\", \n                 colorvar=\"Profit\",\n                 options=list(projection=\"kavrayskiy-vii\"))\nplot(Geo)\n\n\n\ncountryFreqs <- read.delim(\"~/DIRCountryFreqs.txt\")\nGeo=gvisGeoChart(countryFreqs, locationvar=\"country\", \n                 colorvar=\"avgimps\",\n                 options=list(projection=\"kavrayskiy-vii\"))\nplot(Geo)\n",
+    "created" : 1423242094299.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "199047571",
+    "id" : "55BD7D31",
+    "lastKnownWriteTime" : 1423250327,
+    "path" : "C:/R/sdfaf/creatGeo.R",
+    "project_path" : "creatGeo.R",
+    "properties" : {
+        "tempName" : "Untitled4"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

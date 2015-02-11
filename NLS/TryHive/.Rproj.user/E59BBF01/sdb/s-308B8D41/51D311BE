@@ -1,0 +1,17 @@
+{
+    "contents" : "\n\ngetandroidrow <- query_exec(\"\n                            SELECT  'Android' as orgCampaign, \n                            COUNT(DISTINCT CASE WHEN advertiser CONTAINS 'Android 2' then id2 else 'a' end) as Android,\n                            COUNT(DISTINCT CASE WHEN buy CONTAINS 'Chrome' then id2 else 'a' end) as Chrome,\n                            COUNT(DISTINCT CASE WHEN buy CONTAINS 'Baldwin' then id2 else 'a' end) as Baldwin,\n                            COUNT(DISTINCT CASE WHEN buy CONTAINS 'Chromebook' then id2 else 'a' end) as Chromebook,\n                            COUNT(DISTINCT CASE WHEN buy CONTAINS 'Year' then id2 else 'a' end) as YIS,\n                            COUNT(DISTINCT CASE WHEN buy CONTAINS 'GSA' then id2 else 'a' end) as GSA,\n                            COUNT(DISTINCT CASE WHEN buy CONTAINS 'Chromecast' then id2 else 'a' end) as Chromecast,\n                            COUNT(DISTINCT CASE WHEN buy CONTAINS 'Cloud' then id2 else 'a' end) as Cloud,\n                            COUNT(DISTINCT CASE WHEN buy CONTAINS 'YouTube' then id2 else 'a' end) as YouTube,\n                            From (\n                            \n                            select  id2 , buy, advertiser\n                            From \n                            (\n                            select \n                            user_id as id2, buy, advertiser\n                            FROM\n                            TABLE_DATE_RANGE(dt.impression_5295_, TIMESTAMP('2014-12-01'), TIMESTAMP('2014-12-31'))\n                            WHERE  country = 'United States'\n                            AND length(user_id) > 10\n                            AND os <> 'Android'\n                            AND os <>  'Apple iOS' \n                            AND advertiser contains(' NA')\n                            group each by  id2 ,buy, advertiser\n                            ) as tb1  \n                            \n                            INNER JOIN EACH\n                            (\n                            select  user_id\n                            From \n                            (\n                            select \n                            user_id\n                            FROM\n                            TABLE_DATE_RANGE(dt.impression_5295_, TIMESTAMP('2014-12-01'), TIMESTAMP('2014-12-31'))\n                            WHERE  country = 'United States'\n                            AND advertiser CONTAINS 'Android 2' \n                            AND length(user_id) > 10\n                            AND os <> 'Android'\n                            AND os <>  'Apple iOS'  \n                            AND advertiser contains(' NA')\n                            group each by  user_id \n                            )) as tb2 ON tb1.id2 = tb2.user_id )\n                            \n                            \" \n                            , project=\"371216794594\")\n\n\n\n\n",
+    "created" : 1422913815845.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "25605022",
+    "id" : "51D311BE",
+    "lastKnownWriteTime" : 12948304202498162,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled5"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "\ninstall.packages(\"RGoogleAnalytics\")\n\ndevtools::install_github(\"Tatvic/RGoogleAnalytics\")\n\nrequired_libraries <- c('ggplot2',\n                        'reshape2',\n                        'stringr',\n                        'lubridate',\n                        'dplyr',\n                        'scales',\n                        'googleVis',\n                        'shiny',\n                        'magrittr', \n                        'lattice',\n                        #'shinyGoogleCharts',\n                        #'rga',\n                        'dplyr',\n                        'plyr',\n                        'httr',\n                        'lubridate')\n  \n#Install/load required libraries\nfor (lib_name in required_libraries){\n  if (!require(lib_name, character.only = T)) \n    install.packages(lib_name)\n  library(lib_name, character.only = T)\n}\n\n#ga <- GoogleAnalyticsAPI()\n\n\ntoken <- Auth( \"1050576292712-g93goifrbdk4irjhijlutcov7motb5ht.apps.googleusercontent.com\", \"26fH1NtY5mJLfgqcekXQ5z_z\")\n\n\n# Save the token object for future sessions\nsave(token,file=\"./token_file\")\n\n\nValidateToken(token)\n\n#get the ga profiles\nprofilelist <- GetProfiles(token)\n\n\n# Build a list of all the Query Parameters\nquery.list <- Init(start.date = \"2014-1-01\",\n                   end.date = \"2014-08-31\",\n                   dimensions = \"ga:yearMonth ,ga:medium\",\n                   metrics = \"ga:sessions,ga:pageviews\",\n                   max.results = 10000,\n                   sort = \"-ga:yearMonth\",\n                   table.id = \"ga:63294194\")\n# Create the Query Builder object so that the query parameters are validated\nga.query <- QueryBuilder(query.list)\n# Extract the data and store it in a data-frame\nga.data <- GetReportData(ga.query, token, split_daywise = f)\n\n\n#Query 2 for Popsicle\n\n# Build a list of all the Query Parameters\nquery.list <- Init(start.date = \"2014-1-01\",\n                   end.date = \"2014-08-31\",\n                   dimensions = \"ga:yearMonth ,ga:medium\",\n                   metrics = \"ga:sessions,ga:pageviews\",\n                   max.results = 10000,\n                   sort = \"-ga:yearMonth\",\n                   table.id = \"ga:63294194\")\n# Create the Query Builder object so that the query parameters are validated\nga.query <- QueryBuilder(query.list)\n# Extract the data and store it in a data-frame\nga.data <- GetReportData(ga.query, token, split_daywise = f)\n\n\n\n\n\n",
+    "created" : 1409934068130.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3587781896",
+    "id" : "A91626F6",
+    "lastKnownWriteTime" : 1409943874,
+    "path" : "C:/R/PullGAData/GetGaData.R",
+    "project_path" : "GetGaData.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

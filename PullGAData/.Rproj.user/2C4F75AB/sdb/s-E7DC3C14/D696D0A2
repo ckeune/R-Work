@@ -1,0 +1,16 @@
+{
+    "contents" : "\nrequired_libraries <- c('ggplot2',\n                        'reshape2',\n                        'stringr',\n                        'lubridate',\n                        'dplyr',\n                        'scales',\n                        'googleVis',\n                        'shiny',\n                        'magrittr', \n                        'lattice',\n                        'shinyGoogleCharts',\n                        'rga',\n                        'dplyr',\n                        'plyr')\n)\n\n#Install/load required libraries\nfor (lib_name in required_libraries){\n  if (!require(lib_name, character.only = T)) \n    install.packages(lib_name)\n  library(lib_name, character.only = T)\n}\n\n\n\n# 1. Find OAuth settings for google:\n  google <- oauth_endpoint(NULL, \"auth\", \"token\", base_url = \"https://accounts.google.com/o/oauth2\")\n\n# 2. Register an application at https://code.google.com/apis/console#access\nmyapp <- oauth_app(\"google\", \"{my app id}.apps.googleusercontent.com\", secret = \"{my secret}\")\n\n# 3. Get OAuth credentials\ncred <- oauth2.0_token(google, myapp, scope = \"https://www.googleapis.com/auth/yt-analytics.readonly\")",
+    "created" : 1409934091098.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3326260730",
+    "id" : "D696D0A2",
+    "lastKnownWriteTime" : 1403030031,
+    "path" : "C:/R/youTube/trythis.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

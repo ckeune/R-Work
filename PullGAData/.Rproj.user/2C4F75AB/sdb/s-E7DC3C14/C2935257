@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1409944088903.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C2935257",
+    "lastKnownWriteTime" : 7741240722073845761,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "ga.data",
+        "contentUrl" : "content?title=ga.data&file=65fbbed640f447abac82531e994815f4.htm",
+        "displayedObservations" : 1000,
+        "displayedVariables" : 4,
+        "totalObservations" : 1199,
+        "variables" : 4
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

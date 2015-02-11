@@ -1,0 +1,17 @@
+{
+    "contents" : "#http://www.gapminder.org/data/ Income per person (GDP/capita, PPP$ inflation-adjusted)\ngdp <- read.csv(\"./data/gapminder_gdp_per_capita_ppp.csv\")\n\n#http://www.gapminder.org/data/ Children per woman (total fertility)\nfertility <- read.csv(\"./data/gapminder_total_fertility.csv\")\nrequire(reshape2)\ngdp.m=melt(gdp)\nfertility.m=melt(fertility)\ngdp.m$variable=as.numeric(as.character(sub('X','',gdp.m$variable)))\nfertility.m$variable=as.numeric(as.character(sub('X','',fertility.m$variable)))\nfertility.m=fertility.m[!(is.na(fertility.m$value)),]\nff=fertility.m[!(is.na(fertility.m$value)),]\nnames(ff)=c('Country','Year','Fertility')\nrownames(ff)=NULL\ngg=gdp.m[!(is.na(gdp.m$value)),]\nrownames(gg)=NULL\nnames(gg)=c('Country','Year','GDP')\nfg=merge(ff,gg,by=c('Country','Year'))\n\nfg$Region='Unknown'\nfg$Population=11000000\n\n#----http://stackoverflow.com/a/19729235/454773\npluck_ = function (element){\n  function(x) x[[element]]\n}\n\n#' Zip two vectors\nzip_ <- function(..., names = F){\n  x = list(...)\n  y = lapply(seq_along(x[[1]]), function(i) lapply(x, pluck_(i)))\n  if (names) names(y) = seq_along(y)\n  return(y)\n}\n\n#' Sort a vector based on elements at a given position\nsort_ <- function(v, i = 1){\n  v[sort(sapply(v, '[[', i), index.return = T)$ix]\n}\n\nlibrary(plyr)\ndat2 <- dlply(fg, .(Country, Region), function(d){\n  list(\n    Country = d$Country[1],\n    Region = d$Region[1],\n    Fertility = sort_(zip_(d$Year, d$Fertility)),\n    GDP = sort_(zip_(d$Year, d$GDP)),\n    Population=sort_(zip_(d$Year, d$Population))\n  )\n})\n\n#cat(rjson::toJSON(setNames(dat2, NULL)))\n\n#---end\n\nlibrary(rCharts)\nrChart <- rCharts$new()\nrChart$setLib('../motionchart')\nrChart$setTemplate(script = \"../motionchart/layouts/motionchart_Demo.html\")\n\nrChart$set(\n  \n  countryHighlights='',\n  yearMin=1800,\n  yearMax=2005,\n  \n  x='Fertility',\n  y='GDP',\n  radius='Population',\n  color='Region',\n  key='Country',\n  \n  ymin=250 ,\n  ymax=120000,\n  xmin=0,\n  xmax=10,\n  rmin=0,\n  rmax=21000000,\n  \n  xlabel=\"Fertility\",\n  ylabel=\"GDP\",\n  \n  yscale='linear',\n  xscale='linear'\n)\n\nrChart$set( data= rjson::toJSON(setNames(dat2, NULL)) )\n\nrChart\n",
+    "created" : 1422915826058.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2867695760",
+    "id" : "6F941A06",
+    "lastKnownWriteTime" : 12948304202498162,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled6"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

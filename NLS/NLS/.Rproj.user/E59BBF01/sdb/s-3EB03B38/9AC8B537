@@ -1,0 +1,16 @@
+{
+    "contents" : "# \n# \n# required_libraries <- c('reshape2',\n#                         'stringr',\n#                         'dplyr',\n#                         'scales',\n#                         'RODBC',\n#                         'PF')\n# \n# \n# for (lib_name in required_libraries){\n#   if (!require(lib_name, character.only = T)) \n#     install.packages(lib_name)\n#   library(lib_name, character.only = T)\n# } \nsetwd(\"~/shared\")\nsource(\"RRscDF.R\")\n\nlibrary(\"ROracle\")\ndrv <- dbDriver(\"Oracle\")\n\n\n#input the table name here\ntable_name <- \"DS_20141028_RST_0ZV157LCHOGDG\"\n\n#insert column names of test cells\ngtest <- g[, c(\"CONTROL\"     ,   \"TOTAL_CONTROL\" , \"EXPOSED\"   ,     \"TOTAL_EXPOSED\" )]\n\n#insert confidence intervals\nconf <- c(.95,.9,.8)\n\n#input db or data link info here(either olive or analystdb)\ndatabase_name <- \"analystdb\"\n\n#build strings\n#tbl <- paste(table_name, database_name , sep =\"@\")\n\nsqlc <- paste(\"select * from \", table_name) #sep = \"\")\n#connection to analyst\ncon <- dbConnect(drv, \"analyst\", \"2m442D\", \"localhost:1521/ffmis02.internal.essence.co.uk\")\n#connection to olive\n#con <-odbcConnect(\"Olive11\", uid=\"olive\", pwd=\"olive_tr33s\")\n#sqlSave(con, test_table, \"TEST_TABLE\")\n\ng <- dbGetQuery(con, sqlc)\n\n#g <- sqlQuery(con,  sqlc)\n#d <- sqlQuery(con, \"select * from TEST_TABLE\")\n#close(con)\n\n\n#con <- dbConnect(drv, \"analyst\", \"2m442D\", \"localhost:1521/ffmis02.internal.essence.co.uk\")\n\n#res <- dbGetQuery(con, \"SELECT clt_id, clt_name FROM olive.mktg_clients@READONLY_FFMIS01.INTERNAL.ESSENCE.CO.UK\")\n\n\n\n\n\n\n## START MATH\n\ng$c_acct_rate <- Map(\"/\", g$CONTROL, g$TOTAL_CONTROL)\ng$e_acct_rate <- Map(\"/\", g$EXPOSED, g$TOTAL_EXPOSED)\ng$observed_uplift <- Map(\"-\",g$e_acct_rate, g$c_acct_rate )\ng$observed_uplift_sig <- Map(\"-\",Map(\"/\",g$e_acct_rate,g$c_acct_rate ),+1)\n#mtmeans[] <- Map(`/`, mtcars, mtmeans)\n#gt <- g\n#g <- gt\n#set limit of dataset length\nL <- nrow(gtest)\n\nrMN <- NULL\n#set limit of dataset length\nfor (i in conf)\n{\n  print( c(\"Calculating Confidence Interval: \", i)) \n  for (n in 1:n)\n  {\n    xl2 <- c(gtest[n,1],gtest[n,2],gtest[n,3],gtest[n,4])\n    rMN  <- rbind(rMN, subset(RRscDF(xl2, pf=F , alpha = 1-i, rnd = 2), select = c(\"LL\", \"UL\")))\n    \n  } \n  #rMN <- NULL\n  names(rMN) <- paste(names(rMN), i)\n  g <- cbind(g,rMN, row.names = NULL)\n  rMN <- NULL\n}\n\nntable <- gsub(\"RST\", \"MNX\", table_name)\n# paste(table_name, \"K\", sep = \"\")# sep = \"_\") \n\n#dbWriteTable(conn, name, value, row.names = FALSE, overwrite = FALSE,\n\ndbWriteTable(con, ntable, g, row.names = FALSE, overwrite = TRUE)",
+    "created" : 1422823449982.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2099847325",
+    "id" : "9AC8B537",
+    "lastKnownWriteTime" : 1417616698,
+    "path" : "C:/R/MN/Compute_MN.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

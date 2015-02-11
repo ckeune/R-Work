@@ -1,0 +1,17 @@
+{
+    "contents" : "mat = matrix(runif(36), 6)\nrownames(mat) = letters[1:6]\ncolnames(mat) = letters[1:6]\n\nlibrary(circlize)\ncircos.par(gap.degree = 1)\nchordDiagram(mat, grid.col = 1:6, directional = TRUE, annotationTrack = \"grid\",\n             preAllocateTracks = list(list(track.height = 0.05),\n                                      list(track.height = 0.05)))\n\n\ncircos.trackPlotRegion(track.index = 1, panel.fun = function(x, y) {\n  xlim = get.cell.meta.data(\"xlim\")\n  ylim = get.cell.meta.data(\"ylim\")\n  sector.index = get.cell.meta.data(\"sector.index\")\n  circos.text(mean(xlim), mean(ylim), sector.index, facing = \"inside\", niceFacing = TRUE)\n}, bg.border = NA)\ncircos.trackPlotRegion(track.index = 2, panel.fun = function(x, y) {\n  circos.axis(\"bottom\", major.tick.percentage = 0.2, labels.cex = 0.4)\n}, bg.border = NA)\ncircos.clear()",
+    "created" : 1423196919114.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1384852667",
+    "id" : "6BAA6A60",
+    "lastKnownWriteTime" : 1423263281,
+    "path" : "C:/R/sdfaf/circlize2.R",
+    "project_path" : "circlize2.R",
+    "properties" : {
+        "tempName" : "Untitled3"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

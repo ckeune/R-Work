@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1409942092074.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D34C5A28",
+    "lastKnownWriteTime" : 7741240723082584096,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "profilelist",
+        "contentUrl" : "content?title=profilelist&file=0db547827a4b419aa5b27db49d48b773.htm",
+        "displayedObservations" : 23,
+        "displayedVariables" : 2,
+        "totalObservations" : 23,
+        "variables" : 2
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

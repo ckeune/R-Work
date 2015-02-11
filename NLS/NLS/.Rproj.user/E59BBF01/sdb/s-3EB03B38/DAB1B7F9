@@ -1,0 +1,17 @@
+{
+    "contents" : "\nlibrary(\"circlize\")\n\n\nlibrary(\"migest\")\ndemo(\"cfplot_reg\", \"migest\")\nfile.show(system.file(\"demo/cfplot_reg.R\", package = \"migest\"))\n",
+    "created" : 1422825779833.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2018013312",
+    "id" : "DAB1B7F9",
+    "lastKnownWriteTime" : 1422828864,
+    "path" : "C:/R/NLS/NLS/TryRealexample.R",
+    "project_path" : "TryRealexample.R",
+    "properties" : {
+        "tempName" : "Untitled5"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
