@@ -1,0 +1,53 @@
+install.packages("foreign")
+library(foreign)
+mydata = read.spss("C:/Users/chris.keune/Documents/CreativeTest/p21103_Google Hangouts_4 ads test.sav", to.data.frame=T )
+install.packages("foreign")
+library(foreign)
+install.packages("foreign")
+mydata2 = read.spss("C:/Users/chris.keune/Documents/CreativeTest/p21103_Google Hangouts_4 ads test_V2.sav", to.data.frame=T )
+install.packages("foreign")
+library(foreign)
+mydata2 = read.spss("C:/Users/chris.keune/Documents/CreativeTest/p21103_Google Hangouts_4 ads test_V2.sav", to.data.frame=T )
+View(mydata2)
+View(mydata2)
+install.packages("gdata")
+library(gdata)
+getnames <- read.xls("C:/Users/chris.keune/Documents/CreativeTest/Google Hangouts_ReadingGuide_DataFile")
+getnames <- read.xls("C:/Users/chris.keune/Documents/CreativeTest/Google Hangouts_ReadingGuide_DataFile.xlsx")
+View(getnames)
+names(mydata)
+soj <- as.data.frame(names(mydata))
+View(soj)
+summary(mydata2)
+summ <- as.data.frame(summary(mydata2))
+View(summ)
+write.xls(summ,"C:/Users/chris.keune/Documents/CreativeTest/p21103_Google Hangouts_4export.xls")
+install.packages("xlsx")
+library(xlsx)
+detatch(gdata)
+detach(gdata)
+detach(gdata)
+detach("gdata")
+getnames <- read.xls("C:/Users/chris.keune/Documents/CreativeTest/Google Hangouts_ReadingGuide_DataFile.xlsx")
+install.packages("foreign")
+library(foreign)
+install.packages("xlsx")
+library(xlsx)
+required_libraries <- c('ggplot2',
+'reshape2',
+'stringr',
+'lubridate',
+'dplyr',
+'foreign',
+'xlsx')
+#Install/load required libraries
+for (lib_name in required_libraries){
+if (!require(lib_name, character.only = T))
+install.packages(lib_name)
+library(lib_name, character.only = T)
+}
+write.xls(summ,"C:/Users/chris.keune/Documents/CreativeTest/p21103_Google Hangouts_4export.xls")
+getnames <- read.xlsx("C:/Users/chris.keune/Documents/CreativeTest/Google Hangouts_ReadingGuide_DataFile.xlsx")
+getnames <- read.xlsx("C:/Users/chris.keune/Documents/CreativeTest/Google Hangouts_ReadingGuide_DataFile.xlsx", sheetName="")
+getnames <- read.xlsx("C:/Users/chris.keune/Documents/CreativeTest/Google Hangouts_ReadingGuide_DataFile.xlsx", sheetName="Sheet1")
+write.xlsx(summ,"C:/Users/chris.keune/Documents/CreativeTest/p21103_Google Hangouts_4export.xls")
